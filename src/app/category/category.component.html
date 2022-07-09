@@ -1,0 +1,10 @@
+<div class="box">
+    <div class="card" *ngFor="let category of categories">
+        <a class="card__href">
+            <span class="card__info">Počet fotek: {{ category.numberOfPhotos }}</span>
+            <img [src]="category.imagePath" style="filter: grayscale(20%);" class="img-responsive"
+                alt="{{category.name}}">
+            <span class="card__name">{{category.name}}</span>
+        </a>
+    </div>
+</div>

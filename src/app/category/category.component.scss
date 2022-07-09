@@ -1,0 +1,46 @@
+.card {
+    border: 2px solid rgb(61, 61, 61);
+    position: relative;
+
+
+    &:hover{
+        box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+    }
+
+    .card__info {
+        position: absolute;
+        left: 1em;
+        top: 0.5em;
+        color: white;
+        background-color: rgba(0, 0, 0, 0.4);
+        padding: 0.6em;
+        border-radius: 20px;
+        z-index: 1;
+    }
+
+    .card__name {
+        font-weight: bold;
+        background-color: white;
+        justify-self: center;
+        padding: 1em;
+        display: flex;
+        justify-items: center;
+        color: black;
+    }
+
+    .card__href{
+        cursor: pointer;
+        text-decoration: none;
+    }
+
+    .img-responsive {
+        width: 360px;
+        height: 195px;
+    }
+}
+
+.box {
+    display: grid;
+    gap: 2em;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+}
