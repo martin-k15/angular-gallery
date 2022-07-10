@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
 @Component({
   selector: 'app-form-add-category',
@@ -7,10 +7,14 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class FormAddCategoryComponent implements OnInit {
 
-  @Input() addNewCategory:boolean;
+  @Output() closeAddForm = new EventEmitter();
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  closeForm(){
+    this.closeAddForm.emit();
   }
 
 }

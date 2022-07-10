@@ -3,8 +3,8 @@
     <h1>Fotogalerie</h1>
     <span>Kategorie</span>
 
-    <app-photo-category [cat]="categories" [addNew] = "addNewCategory"></app-photo-category>
-    <app-form-add-category *ngIf="addNewCategory" [addNewCategory] = "addNewCategory"></app-form-add-category>
+    <app-photo-category *ngIf="!addNewCategory" [cat]="categories" [addNew] = "addNewCategory"  (userAddCategory)="userClicked()"></app-photo-category>
+    <app-form-add-category *ngIf="addNewCategory" (closeAddForm)="hideForm()"></app-form-add-category>
   </div>
 
 </div>

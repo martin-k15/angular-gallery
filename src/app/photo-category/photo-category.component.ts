@@ -10,7 +10,7 @@ import { PhotoCategory } from '../photo-category.module';
 export class PhotoCategoryComponent implements OnInit {
 
   @Input() cat: PhotoCategory[];
-  @Input() addNew: boolean;
+  @Input() addNew: boolean =false;
 
   @Output() userAddCategory = new EventEmitter<boolean>();
 

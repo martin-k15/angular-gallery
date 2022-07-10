@@ -19,6 +19,14 @@ export class AppComponent {
     this.categories = this.photoCategoryService.getCategories();
   }
 
+  userClicked(){
+    this.addNewCategory = true;
+  }
+
+  hideForm(){
+    this.addNewCategory = false;
+  }
+
 
 
   
