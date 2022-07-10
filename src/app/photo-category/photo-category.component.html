@@ -1,1 +1,21 @@
-<p>photo-category works!</p>
+<div class="container">
+    <a class="container__item" *ngFor="let c of cat">
+        <div class="card">
+            <span class="card__info">{{ c.photos.length }} fotek</span>
+            <img [src]="c.previewPhotoPath" class="img-responsive" alt="alt-text">
+            <span class="card__name">{{ c.name }}</span>
+        </div>
+    </a>
+
+
+    <a class="container__item" (click)="addCategory()">
+        <div class="card">
+            <div class="card__secondary">
+                <img src="./../assets/img/icons8-plus.svg" class="img-add" alt="alt-text">
+                <span>Přidat kategorii</span>
+            </div>
+        </div>
+    </a>
+</div>
+
+<app-photos-list></app-photos-list>

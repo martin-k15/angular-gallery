@@ -1,0 +1,54 @@
+.box-form {
+    display: flex;
+    flex-direction: column;
+    width: 20em;
+    height: 10em;
+    border: 1px solid black;
+    border-radius: 12px;
+    padding: 1em;
+    margin: 0 auto;
+}
+
+.box-form__header {
+    display: flex;
+    justify-content: space-between;
+    margin: 1em;
+}
+
+.box-form__header span {
+    font-weight: 600;
+}
+
+input:focus {
+    outline: 1px solid rgba(0, 0, 255, 0.5);
+}
+
+.box-form {
+    padding: 1em;
+}
+input {
+    height: 100%;
+    border: none;
+    width: 100%;
+    padding: 1em;
+
+}
+
+button{
+    background-color: black;
+    border: none;
+    padding: 1em 2em;
+    width: 100%;
+    color: white;
+    border-radius: 12px;
+}
+
+.cross--href{
+    text-decoration: none;
+    position: relative;
+    bottom: 0.2em;
+}
+
+.box-form__button{
+    cursor: pointer;
+}
