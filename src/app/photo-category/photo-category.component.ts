@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { AddNewCategoryService } from '../add-new-category.service';
+import { PhotoCategoryService } from '../photo-category.service';
 import { PhotoCategory } from '../photo-category.module';
+
 
 @Component({
   selector: 'app-photo-category',
@@ -12,16 +13,22 @@ export class PhotoCategoryComponent implements OnInit {
   @Input() cat: PhotoCategory[];
   @Input() addNew: boolean =false;
 
+  categorySelected: boolean = false;
+  categorySelectedEv = new EventEmitter<boolean>();
+
   @Output() userAddCategory = new EventEmitter<boolean>();
 
-  constructor(private addNewCategoryService: AddNewCategoryService) { }
+  categories: PhotoCategory[];
+
+  constructor(private photoCategoryService: PhotoCategoryService) { }
 
 
   ngOnInit(): void {
+    this.categories = this.photoCategoryService.getCategories();
+    console.log("Categories: " + this.categories)
   }
 
   addCategory(){
-    //this.addNew = this.addNewCategoryService.getStatus();
     if(this.addNew){
       this.userAddCategory.emit(!this.addNew)
       this.addNew = false;
@@ -30,4 +37,5 @@ export class PhotoCategoryComponent implements OnInit {
       this.addNew = true;
     }
   }
+
 }

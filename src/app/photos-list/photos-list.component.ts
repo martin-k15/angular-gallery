@@ -9,7 +9,9 @@ export class PhotosListComponent implements OnInit {
 
   constructor() { }
 
+
   ngOnInit(): void {
+
   }
 
 }

@@ -5,9 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { PhotoCategoryService } from './photo-category.service';
 import { PhotoCategoryComponent } from './photo-category/photo-category.component';
-import { PhotosListComponent } from './photo-category/photos-list/photos-list.component';
+import { PhotosListComponent } from './photos-list/photos-list.component';
 import { FormAddCategoryComponent } from './form-add-category/form-add-category.component';
-import { AddNewCategoryService } from './add-new-category.service';
 
 @NgModule({
   declarations: [
@@ -20,7 +19,7 @@ import { AddNewCategoryService } from './add-new-category.service';
     BrowserModule,
     AppRoutingModule,
   ],
-  providers: [PhotoCategoryService, AddNewCategoryService],
+  providers: [PhotoCategoryService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

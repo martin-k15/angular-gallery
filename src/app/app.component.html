@@ -1,10 +1,10 @@
 <div class="container">
   <div class="row">
-    <h1>Fotogalerie</h1>
-    <span>Kategorie</span>
 
-    <app-photo-category *ngIf="!addNewCategory" [cat]="categories" [addNew] = "addNewCategory"  (userAddCategory)="userClicked()"></app-photo-category>
-    <app-form-add-category *ngIf="addNewCategory" (closeAddForm)="hideForm()"></app-form-add-category>
+    <router-outlet></router-outlet>
+    <!-- <app-photo-category *ngIf="!addNewCategory" [cat]="categories" [addNew] = "addNewCategory" (userAddCategory)="userClicked()"></app-photo-category> -->
+    <!-- <app-form-add-category *ngIf="addNewCategory" (closeAddForm)="hideForm()"></app-form-add-category> -->
+    <!-- <app-photos-list></app-photos-list> -->
   </div>
 
 </div>

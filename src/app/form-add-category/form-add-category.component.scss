@@ -15,23 +15,29 @@
     margin: 1em;
 }
 
+legend{
+    font-size: small;
+}
+
 .box-form__header span {
     font-weight: 600;
 }
 
 input:focus {
-    outline: 1px solid rgba(0, 0, 255, 0.5);
+    outline: none;
 }
 
 .box-form {
     padding: 1em;
+    height: 100%;
 }
+
 input {
     height: 100%;
     border: none;
-    width: 100%;
     padding: 1em;
-
+    margin: 1em 0;
+    width: 90%;
 }
 
 button{

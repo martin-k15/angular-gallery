@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { AddNewCategoryService } from './add-new-category.service';
 import { PhotoCategory } from './photo-category.module';
 import { PhotoCategoryService } from './photo-category.service';
 
@@ -13,7 +12,7 @@ export class AppComponent {
 
   categories: PhotoCategory[];
   addNewCategory: boolean = false;
-  constructor(private photoCategoryService: PhotoCategoryService, private addNewCategoryService: AddNewCategoryService){}
+  constructor(private photoCategoryService: PhotoCategoryService){}
 
   ngOnInit():void{
     this.categories = this.photoCategoryService.getCategories();
@@ -21,12 +20,12 @@ export class AppComponent {
 
   userClicked(){
     this.addNewCategory = true;
+    console.log("A")
   }
 
   hideForm(){
     this.addNewCategory = false;
   }
-
 
 
   
