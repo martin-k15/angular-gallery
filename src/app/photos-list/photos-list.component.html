@@ -1,9 +1,20 @@
-<h4> &#x2190; {{nameCategory}}</h4>
+<h4> <a href="" class="href">&#x2190; {{nameCategory}}</a></h4>
 
 <div class="container">
     <a class="container__item" *ngFor="let p of photos">
         <div class="card">
-            <img [src]="p.path" class="img-responsive" alt="alt-text">
+            <img [src]="p.path" class="img-responsive" [alt]=p.path>
         </div>
     </a>
+
+    <a class="container__item" routerLink="/drag-and-drop">
+        <div class="card">
+            <div class="card__secondary">
+                <img src="./../assets/img/icons8-plus.svg" class="img-add" alt="alt-text">
+                <span>Přidat fotografii</span>
+            </div>
+        </div>
+    </a>
+
 </div>
+

@@ -1,34 +1,46 @@
 import { PhotoCategory } from "./photo-category.module";
 import { Photo } from "./photo.module";
 
+
+
 export class PhotoCategoryService {
+
   photosForCategory: Photo[] = [
-    new Photo('1', '../../assets/img/category-photos/1.webp'),
-    new Photo('2', '../../assets/img/category-photos/2.webp'),
-    new Photo('3', '../../assets/img/category-photos/3.webp'),
-    new Photo('4', '../../assets/img/category-photos/4.webp'),
-    new Photo('5', '../../assets/img/category-photos/5.webp'),
-    new Photo('6', '../../assets/img/category-photos/6.webp'),
-    new Photo('7', '../../assets/img/category-photos/7.webp'),
-    new Photo('8', '../../assets/img/category-photos/8.webp'),
-    new Photo('9', '../../assets/img/category-photos/9.webp'),
-    new Photo('10', '../../assets/img/category-photos/10.webp')
+    new Photo('https://www.gstatic.com/webp/gallery/1.webp'),
+    new Photo('https://www.gstatic.com/webp/gallery/2.webp'),
+    new Photo('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSfdnzDX7kCjYqW4kE9VQ8Bb4QteDeeVb81La2NJgVAkRl7gKTMUOETe3DmzMk1jMcvuI&usqp=CAU'),
+    new Photo('https://www.gstatic.com/webp/gallery/4.webp'),
+    new Photo('https://www.gstatic.com/webp/gallery/5.webp'),
+    new Photo('https://img.freepik.com/free-photo/breathtaking-shot-beautiful-stones-turquoise-water-lake-hills-background_181624-12847.jpg?w=2000'),
+    new Photo('https://img.freepik.com/free-photo/book-library-with-open-textbook_1150-5920.jpg?t=st=1657554619~exp=1657555219~hmac=2800c31ea6ada3f51d4477a1e1828672945fc72742975a078adcc1b739194c36&w=740'),
+    new Photo('https://img.freepik.com/free-photo/portrait-smiling-beautiful-girl-her-handsome-boyfriend-woman-casual-summer-jeans-clothes-hugging_158538-5500.jpg?t=st=1657554529~exp=1657555129~hmac=6c37be25e2751aa0c15612fad3d6732d181cdc7ce0192791cbea69888d35171d&w=740'),
+    new Photo('https://img.freepik.com/free-photo/soccer-into-goal-success-concept_1150-5276.jpg?t=st=1657554553~exp=1657555153~hmac=8f2f8ad17adf44b945a6198f40e30b38b93886cd3f98012779e746d2cc0a5bd2&w=740')
   ];
 
   categories: PhotoCategory[] = [
-    new PhotoCategory('Příroda', '../../assets/img/nature.webp', []),
-    new PhotoCategory('Architektura', '../../assets/img/architecture.webp', this.photosForCategory.slice(1, 7)),
-    new PhotoCategory('Lidé', '../../assets/img/people.webp', []),
-    new PhotoCategory('Jídlo', '../../assets/img/food.webp', []),
-    new PhotoCategory('Abstraktní', '../../assets/img/abstract.webp', [])
+    new PhotoCategory('Příroda', 'https://blog.depositphotos.com/wp-content/uploads/2017/07/Soothing-nature-backgrounds-2.jpg.webp', this.photosForCategory.slice(1, 4)),
+    new PhotoCategory('Architektura', 'https://www.2020architekti.cz/wp-content/webp-express/webp-images/doc-root/wp-content/uploads/2022/02/NZ_RadoveDomy_06-1024x576.jpg.webp', this.photosForCategory),
+    new PhotoCategory('Lidé', 'https://cdn.pixabay.com/photo/2021/02/18/12/03/people-6027028__340.jpg',  this.photosForCategory.slice(1, 4)),
+    new PhotoCategory('Jídlo', 'https://d39-a.sdn.cz/d_39/c_img_gY_d/8uPL.jpeg?fl=cro,0,156,3000,1687%7Cres,1200,,1%7Cwebp,75',  this.photosForCategory.slice(1, 4)),
+    new PhotoCategory('Abstraktní', 'https://expertphotography.b-cdn.net/wp-content/uploads/2018/03/abstract-photography.1.jpg', this.photosForCategory.slice(1, 4))
   ];
 
-  emptyArr: Photo[];
-  getCategories() {
+
+  generatePhotos() {
+    let index = 0;
+    while (index < 10) {
+      let photoPath: string = this.getRandomUrlPath();
+      this.photosForCategory.push(new Photo(photoPath));
+      index++;
+    }
+  }
+
+  getCategoriesArray() {
+    this.generatePhotos();
     return this.categories.slice();
   }
 
-  categoryName: string
+  categoryName: string;
   setCategory(elem: PhotoCategory) {
     this.categoryName = elem.name;
   }
@@ -37,18 +49,24 @@ export class PhotoCategoryService {
     return this.categoryName;
   }
 
+  getPhotos() {
+    return this.categories.find(c => c.name === this.categoryName)?.photos as Photo[];
+  }
+
   getPhotosOfCategory(name: string) {
-    console.log(this.categories)
+    //console.log(this.categories)
+  }
 
-    for (let i = 0; i < this.categories.length; i++) {
-      let c = this.categories[i];
-      if (c.name == name) {
-        return c.photos
-      }
-    }
-    return this.emptyArr;
+  toAddNewCategory(name: string) {
+    console.log("New name category: " + name)
+    let newPhotoPath: string = this.getRandomUrlPath();
+    this.categories.push(new PhotoCategory(name, newPhotoPath, []));
+  }
 
-
-
+  getRandomUrlPath() {
+    let numWidth = Math.floor(Math.random() * (660 - 650 + 1)) + 650;
+    let numHeight = Math.floor(Math.random() * (400 - 390 + 1)) + 390;
+    let newPhotoPath: string = 'https://picsum.photos/' + numWidth.toString() + '/' + numHeight.toString();
+    return newPhotoPath;
   }
 }

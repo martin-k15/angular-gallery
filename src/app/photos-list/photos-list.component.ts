@@ -15,13 +15,11 @@ export class PhotosListComponent implements OnInit {
   photos: Photo[] = [];
 
   ngOnInit(){
-
-  }
-  
-
-   test(){
     this.nameCategory = this.photoCatServ.getCategoryName();
-    this.photos = this.photoCatServ.getPhotosOfCategory(this.nameCategory);
-    console.log("Name get, photos are: "+ this.photos)
-   }
+    this.photos = this.photoCatServ.getPhotos();
+    
+  }
+
+
+  
 }

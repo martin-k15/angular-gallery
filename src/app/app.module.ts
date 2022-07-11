@@ -7,13 +7,15 @@ import { PhotoCategoryService } from './photo-category.service';
 import { PhotoCategoryComponent } from './photo-category/photo-category.component';
 import { PhotosListComponent } from './photos-list/photos-list.component';
 import { FormAddCategoryComponent } from './form-add-category/form-add-category.component';
+import { PhotoAddComponent } from './photo-category/photo-add/photo-add.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     PhotoCategoryComponent,
     PhotosListComponent,
-    FormAddCategoryComponent
+    FormAddCategoryComponent,
+    PhotoAddComponent
   ],
   imports: [
     BrowserModule,

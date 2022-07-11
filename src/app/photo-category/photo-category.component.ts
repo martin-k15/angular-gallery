@@ -9,39 +9,16 @@ import { PhotoCategory } from '../photo-category.module';
   styleUrls: ['./photo-category.component.scss']
 })
 export class PhotoCategoryComponent implements OnInit {
-
-  @Input() cat: PhotoCategory[];
-  @Input() addNew: boolean =false;
-
-  categorySelected: boolean = false;
-  categorySelectedEv = new EventEmitter<boolean>();
-
-  @Output() userAddCategory = new EventEmitter<boolean>();
-
-  categories: PhotoCategory[];
-
+ 
   constructor(private photoCategoryService: PhotoCategoryService) { }
 
-  tmp: string = this.photoCategoryService.getCategoryName();
-
   ngOnInit(): void {
-    this.categories = this.photoCategoryService.getCategories();
-    console.log("Categories: " + this.categories)
   }
 
-  addCategory(){
-    if(this.addNew){
-      this.userAddCategory.emit(!this.addNew)
-      this.addNew = false;
-    } else{
-      this.userAddCategory.emit(!this.addNew)
-      this.addNew = true;
-    }
-  }
+  categories: PhotoCategory[] = this.photoCategoryService.getCategoriesArray()
 
-  categoryClick: PhotoCategory;
   showCategory(c: PhotoCategory){
-    this.photoCategoryService.setCategory(c)
+    this.photoCategoryService.setCategory(c);
   }
 
 }

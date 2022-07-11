@@ -1,13 +1,13 @@
 <div class="box-form">
     <div class="box-form__header">
         <span>Přidat kategorii</span>
-        <a href="#" class="cross--href" (click)="closeForm()">&#10006;</a>
+        <a routerLink="../categories" class="cross--href">&#10006;</a>
     </div>
     <form>
         <fieldset>
             <legend>Název kategorie</legend>
-            <input type="text" id="name">
-            <button class="box-form__button" type="button">Přidat</button>
+            <input type="text" id="name" #newCategory>
+            <button class="box-form__button" type="button" (click)="addCategory(newCategory.value)">Přidat</button>
         </fieldset>
     </form>
 </div>
