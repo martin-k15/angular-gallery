@@ -14,4 +14,17 @@ export class PhotoCategoryService{
       getCategories(){
         return this.categories.slice();
       }
+
+      categoryName: string
+      setCategory(elem: PhotoCategory){
+        this.categoryName = elem.name;
+      }
+
+      getCategoryName(){
+        return this.categoryName;
+      }
+
+      getPhotosOfCategory(name: string){
+        console.log(this.categories)
+      }
 }

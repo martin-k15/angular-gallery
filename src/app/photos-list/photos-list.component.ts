@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { PhotoCategory } from '../photo-category.module';
+import { PhotoCategoryService } from '../photo-category.service';
+import { Photo } from '../photo.module';
 
 @Component({
   selector: 'app-photos-list',
@@ -7,10 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PhotosListComponent implements OnInit {
 
-  constructor() { }
+  
+  constructor(private photoCatServ: PhotoCategoryService) { }
 
+
+  nameCategory: string;
+  photos: Photo[];
 
   ngOnInit(): void {
+    this.nameCategory = this.photoCatServ.getCategoryName();
+    this.photoCatServ.getPhotosOfCategory(this.nameCategory);
+    console.log("Name get")
 
   }
 

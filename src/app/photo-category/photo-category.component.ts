@@ -38,4 +38,9 @@ export class PhotoCategoryComponent implements OnInit {
     }
   }
 
+  categoryClick: PhotoCategory;
+  showCategory(c: PhotoCategory){
+    this.photoCategoryService.setCategory(c)
+  }
+
 }

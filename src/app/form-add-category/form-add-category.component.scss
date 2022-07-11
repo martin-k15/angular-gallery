@@ -1,9 +1,13 @@
+body{
+    background-color: grey;
+}
 .box-form {
     display: flex;
     flex-direction: column;
     width: 20em;
     height: 10em;
     border: 1px solid black;
+
     border-radius: 12px;
     padding: 1em;
     margin: 0 auto;

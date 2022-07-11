@@ -1,7 +1,6 @@
-<h1>Fotogalerie</h1>
-<span>Kategorie</span>
+
 <div class="container">
-    <a class="container__item" *ngFor="let c of categories" routerLink="/photos">
+    <a class="container__item" *ngFor="let c of categories" routerLink="/photos" (click)="showCategory(c)">
         <div class="card">
             <span class="card__info">{{ c.photos.length }} fotek</span>
             <img [src]="c.previewPhotoPath" class="img-responsive" alt="alt-text">
@@ -19,5 +18,3 @@
         </div>
     </a>
 </div>
-
-<app-photos-list *ngIf="categorySelected"></app-photos-list>
