@@ -10,18 +10,18 @@ import { Photo } from '../photo.module';
 })
 export class PhotosListComponent implements OnInit {
 
-  
   constructor(private photoCatServ: PhotoCategoryService) { }
-
-
   nameCategory: string;
-  photos: Photo[];
+  photos: Photo[] = [];
 
-  ngOnInit(): void {
-    this.nameCategory = this.photoCatServ.getCategoryName();
-    this.photoCatServ.getPhotosOfCategory(this.nameCategory);
-    console.log("Name get")
+  ngOnInit(){
 
   }
+  
 
+   test(){
+    this.nameCategory = this.photoCatServ.getCategoryName();
+    this.photos = this.photoCatServ.getPhotosOfCategory(this.nameCategory);
+    console.log("Name get, photos are: "+ this.photos)
+   }
 }

@@ -22,6 +22,7 @@ export class PhotoCategoryComponent implements OnInit {
 
   constructor(private photoCategoryService: PhotoCategoryService) { }
 
+  tmp: string = this.photoCategoryService.getCategoryName();
 
   ngOnInit(): void {
     this.categories = this.photoCategoryService.getCategories();

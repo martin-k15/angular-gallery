@@ -1,6 +1,9 @@
 <h4> &#x2190; {{nameCategory}}</h4>
-<span>
-    Lorem ipsum dolor sit amet consectetur adipisicing elit. Alias cumque rem
-    fugiat quae neque aspernatur modi, magnam doloremque magni,
-    quasi sed ipsum quis eum molestias vero deleniti tenetur perferendis omnis.
-</span>
+
+<div class="container">
+    <a class="container__item" *ngFor="let p of photos">
+        <div class="card">
+            <img [src]="p.path" class="img-responsive" alt="alt-text">
+        </div>
+    </a>
+</div>
