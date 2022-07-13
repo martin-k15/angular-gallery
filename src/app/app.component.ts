@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { PhotoCategory } from './photo-category.module';
-import { PhotoCategoryService } from './photo-category.service';
+import { PhotoCategoryService } from './service/photo-category.service';
 import { Photo } from './photo.module';
 
 @Component({

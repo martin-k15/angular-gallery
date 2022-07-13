@@ -1,5 +1,7 @@
-import { PhotoCategory } from "./photo-category.module";
-import { Photo } from "./photo.module";
+import { Route } from "@angular/router";
+import { PhotoCategory } from "../photo-category.module";
+import { Photo } from "../photo.module";
+import { PhotosListComponent } from "../photos-list/photos-list.component";
 
 
 
@@ -18,11 +20,11 @@ export class PhotoCategoryService {
   ];
 
   categories: PhotoCategory[] = [
-    new PhotoCategory('Příroda', 'https://blog.depositphotos.com/wp-content/uploads/2017/07/Soothing-nature-backgrounds-2.jpg.webp', this.photosForCategory.slice(1, 4)),
-    new PhotoCategory('Architektura', 'https://www.2020architekti.cz/wp-content/webp-express/webp-images/doc-root/wp-content/uploads/2022/02/NZ_RadoveDomy_06-1024x576.jpg.webp', this.photosForCategory),
-    new PhotoCategory('Lidé', 'https://cdn.pixabay.com/photo/2021/02/18/12/03/people-6027028__340.jpg',  this.photosForCategory.slice(1, 4)),
-    new PhotoCategory('Jídlo', 'https://d39-a.sdn.cz/d_39/c_img_gY_d/8uPL.jpeg?fl=cro,0,156,3000,1687%7Cres,1200,,1%7Cwebp,75',  this.photosForCategory.slice(1, 4)),
-    new PhotoCategory('Abstraktní', 'https://expertphotography.b-cdn.net/wp-content/uploads/2018/03/abstract-photography.1.jpg', this.photosForCategory.slice(1, 4))
+    new PhotoCategory('Nature', 'https://blog.depositphotos.com/wp-content/uploads/2017/07/Soothing-nature-backgrounds-2.jpg.webp', this.photosForCategory.slice(0, 1)),
+    new PhotoCategory('Architecture', 'https://www.2020architekti.cz/wp-content/webp-express/webp-images/doc-root/wp-content/uploads/2022/02/NZ_RadoveDomy_06-1024x576.jpg.webp', this.photosForCategory),
+    new PhotoCategory('People', 'https://cdn.pixabay.com/photo/2021/02/18/12/03/people-6027028__340.jpg',  this.photosForCategory.slice(1, 4)),
+    new PhotoCategory('Food', 'https://d39-a.sdn.cz/d_39/c_img_gY_d/8uPL.jpeg?fl=cro,0,156,3000,1687%7Cres,1200,,1%7Cwebp,75',  this.photosForCategory.slice(1, 3)),
+    new PhotoCategory('Abstract', 'https://expertphotography.b-cdn.net/wp-content/uploads/2018/03/abstract-photography.1.jpg', this.photosForCategory.slice(1, 6))
   ];
 
 
@@ -31,10 +33,18 @@ export class PhotoCategoryService {
     while (index < 10) {
       let photoPath: string = this.getRandomUrlPath();
       this.photosForCategory.push(new Photo(photoPath));
+      /*
+      this.categories.forEach(c => {
+          c.nameDescriptionByNumber = c.getNameDesc(c.photos.length)
+      });
+      */
       index++;
     }
   }
 
+  addToRoutes(r: Route[]){
+    //r.push( {path: 'categories/Food', component: PhotosListComponent})
+  }
   getCategoriesArray() {
     this.generatePhotos();
     return this.categories.slice();

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { PhotoCategoryService } from '../photo-category.service';
+import { PhotoCategoryService } from '../service/photo-category.service';
 import { PhotoCategory } from '../photo-category.module';
 
 
