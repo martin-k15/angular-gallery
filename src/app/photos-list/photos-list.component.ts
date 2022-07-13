@@ -11,14 +11,42 @@ import { Photo } from '../photo.module';
 export class PhotosListComponent implements OnInit {
 
   constructor(private photoCatServ: PhotoCategoryService) { }
+
   nameCategory: string;
   photos: Photo[] = [];
 
-  ngOnInit(){
+  //categories: PhotoCategory[] = this.photoCatServ.getCategoriesArray();
+  //photosAllCategories: { name: string; photos: Photo[] }[] = [];
+
+
+  ngOnInit() {
+
     this.nameCategory = this.photoCatServ.getCategoryName();
     this.photos = this.photoCatServ.getPhotos();
+
+    /*
+    if (this.nameCategory === undefined) {
+      localStorage.getItem('C-NAME')
+      console.log("Settt")
+      //this.nameCategory = localStorage.getItem('C-NAME');
+    } else {
+      localStorage.setItem('C-NAME', this.nameCategory);
+      //this.loadAllPhotos()
+    }
+    */
+    console.log("Photos-list: onInit called! " + this.nameCategory)
   }
 
 
-  
+//  loadAllPhotos(): void;
+/*
+  loadAllPhotos() {
+    this.categories.forEach(c => {
+      this.photosAllCategories.push({ name: c.name, photos: c.photos })
+    });
+    console.log(this.photosAllCategories);
+    this.nameCategory = this.photoCatServ.getCategoryName();
+    console.log("this.nameCategory");
+  }*/
+
 }

@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Router } from '@angular/router';
-import { PhotoCategoryService } from '../service/photo-category.service';
+import { PhotoCategoryService } from '../../service/photo-category.service';
 
 @Component({
   selector: 'app-form-add-category',

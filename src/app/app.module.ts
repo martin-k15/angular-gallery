@@ -6,8 +6,8 @@ import { AppComponent } from './app.component';
 import { PhotoCategoryService } from './service/photo-category.service';
 import { PhotoCategoryComponent } from './photo-category/photo-category.component';
 import { PhotosListComponent } from './photos-list/photos-list.component';
-import { FormAddCategoryComponent } from './form-add-category/form-add-category.component';
-import { PhotoAddComponent } from './photo-category/photo-add/photo-add.component';
+import { FormAddCategoryComponent } from './photo-category/form-add-category/form-add-category.component';
+import { PhotoAddComponent } from './photos-list/photo-add/photo-add.component';
 import { NgxDropzoneComponent } from 'ngx-dropzone';
 
 @NgModule({
