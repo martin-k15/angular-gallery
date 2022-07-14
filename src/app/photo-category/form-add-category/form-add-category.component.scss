@@ -1,16 +1,16 @@
-body{
-    background-color: grey;
-}
+@import "./../../styles/variables.scss";
+
 .box-form {
     display: flex;
     flex-direction: column;
-    width: 20em;
-    height: 10em;
-    border: 1px solid black;
+    width: 25em;
+    height: 100%;
+    border: 1px solid $main-color;
 
-    border-radius: 12px;
+    border-radius: $card-radius;
     padding: 1em;
-    margin: 0 auto;
+    margin: 1em auto;
+
 }
 
 .box-form__header {
@@ -19,7 +19,7 @@ body{
     margin: 1em;
 }
 
-legend{
+legend {
     font-size: small;
 }
 
@@ -29,22 +29,25 @@ legend{
 
 input:focus {
     outline: none;
+    border-bottom: 1px solid $hover-color;
 }
 
-.box-form {
-    padding: 1em;
-    height: 100%;
+input[type='text'] {
+    font-family: 'Poppins', sans-serif;
 }
+
 
 input {
     height: 100%;
     border: none;
+    border-bottom: 1px solid $main-color;
     padding: 1em;
     margin: 1em 0;
     width: 90%;
+    background-color: transparent;
 }
 
-button{
+.box-form__button {
     background-color: black;
     border: none;
     padding: 1em 2em;
@@ -53,12 +56,25 @@ button{
     border-radius: 12px;
 }
 
-.cross--href{
+.cross--href {
     text-decoration: none;
     position: relative;
     bottom: 0.2em;
+    color: black;
+    &:focus{
+        color: $hover-color;
+    }
 }
 
-.box-form__button{
+
+::placeholder{
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.box-form__button {
     cursor: pointer;
+
+    &:focus{
+        border: none;
+    }
 }

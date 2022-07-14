@@ -1,54 +1,68 @@
-@import "../photo-category/photo-category.component.scss";
+@import "./../styles/mixins/mixins";
+@import "./../styles/variables";
 
 .container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(390px, 1fr));
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1vh;
     margin: 2em;
-    gap: 1vw;
 }
 
 .container__item {
     cursor: pointer;
-    margin: 0 auto;
     text-decoration: none;
-
-    &:hover{
+    border: 2px solid $main-color;
+    width: 23em;
+    border-radius: calc(#{$card-radius} - 0px);
+    &:hover {
         box-shadow: 0 7px 14px rgba(0, 0, 0, 0.15), 0 10px 10px rgba(0, 0, 0, 0.1);
+    }
+
+}
+
+.card__name--add {
+    @include category-name;
+}
+
+.container__item--img {
+    width: 100%;
+    object-fit: cover;
+    object-position: bottom;
+    //height: 18em;
+    height: 100%;
+    border-radius: calc(#{$card-radius} - 2px);
+}
+
+.back-href {
+    text-decoration: none;
+    color: black;
+
+    &:focus {
+        color: black;
+    }
+
+    &:hover {
+        text-decoration: underline;
+        color: $hover-color;
     }
 }
 
-.card {
+.plus-marker {
+    position: relative;
+    height: 18em;
     display: flex;
     flex-direction: column;
-    width: 23em;
-    height: 18em;
+    justify-content: center;
     align-items: center;
 }
 
+.plus-marker::before {
+    @include plus-marker;
+    mask-image: url(./../../assets/img/plus-solid.svg);
 
-.card {
-    justify-content: space-between;
-    margin: 0 auto;
-    border-radius: 4px;
     position: relative;
-    border: 2px solid rgba(0, 0, 0, 0.7);
+    left: 6px;
 }
 
-.img-responsive {
-    width: 100%;
-    height: 100%;
-    filter: grayscale(30%);
-}
-
-.href{
-    text-decoration: none;
-    color: black;
-}
-
-.href:focus{
-    color: black;
-}
-
-.href:hover{
-    text-decoration: underline;
-}
+/* */

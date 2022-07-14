@@ -1,0 +1,13 @@
+@mixin plus-marker {
+
+    background-color: $main-color;
+    mask-repeat: no-repeat;
+    content: '';
+    width:9em;
+    height:9em;
+}
+
+@mixin category-name{
+        color: $main-color;
+        margin: 1em;
+}

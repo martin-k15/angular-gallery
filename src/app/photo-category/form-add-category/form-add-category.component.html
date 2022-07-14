@@ -3,11 +3,11 @@
         <span>Přidat kategorii</span>
         <a routerLink="../" class="cross--href">&#10006;</a>
     </div>
-    <form>
+    <form (submit)="addCategory(newCategory.value)" >
         <fieldset>
             <legend>Název kategorie</legend>
-            <input type="text" id="name" #newCategory>
-            <button class="box-form__button" type="button" (click)="addCategory(newCategory.value)">Přidat</button>
+            <input type="text" id="name" #newCategory placeholder="Enter a name of category..">
+            <input class="box-form__button" type="button" value="Přidat" (click)="addCategory(newCategory.value)">
         </fieldset>
     </form>
 </div>
