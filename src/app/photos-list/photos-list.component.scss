@@ -65,4 +65,6 @@
     left: 6px;
 }
 
-/* */
+.container__item:last-child:hover{
+    border: 2px solid $hover-color;
+}

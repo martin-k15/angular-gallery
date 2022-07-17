@@ -1,1 +1,7 @@
-<p>photo add works !</p>
+<form class="input-form">
+    <p>Upload a JPG photo..</p>
+    <input type="file" class="file-input"
+     #fileUpload (change)="onInsert(fileUpload)">
+    <label class="button" for="fileElem">Select some files</label>
+    
+</form>

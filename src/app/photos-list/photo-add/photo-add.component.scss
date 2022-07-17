@@ -1,0 +1,13 @@
+@import "./../../styles/mixins/mixins";
+@import "./../../styles/variables";
+
+.input-form{
+    border: 2px dashed white;
+    border-radius:$card-radius;
+    padding: 2em;
+    margin: 0 auto;
+}
+
+.input-form.highlight{
+    border-color: purple;
+}

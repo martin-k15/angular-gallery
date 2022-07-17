@@ -8,8 +8,9 @@ import { PhotoCategoryComponent } from './photo-category/photo-category.componen
 import { PhotosListComponent } from './photos-list/photos-list.component';
 import { FormAddCategoryComponent } from './photo-category/form-add-category/form-add-category.component';
 import { PhotoAddComponent } from './photos-list/photo-add/photo-add.component';
-import { NgxDropzoneComponent } from 'ngx-dropzone';
 
+
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,7 +22,6 @@ import { NgxDropzoneComponent } from 'ngx-dropzone';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    //NgxDropzoneComponent
   ],
   providers: [PhotoCategoryService],
   bootstrap: [AppComponent],

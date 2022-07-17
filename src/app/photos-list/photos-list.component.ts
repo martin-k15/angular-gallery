@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PhotoCategory } from '../photo-category.module';
 import { PhotoCategoryService } from '../service/photo-category.service';
 import { Photo } from '../photo.module';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-photos-list',
@@ -10,17 +11,20 @@ import { Photo } from '../photo.module';
 })
 export class PhotosListComponent implements OnInit {
 
-  constructor(private photoCatServ: PhotoCategoryService) { }
+  constructor(private photoCatServ: PhotoCategoryService, private route: ActivatedRoute) { }
 
   nameCategory: string;
   photos: Photo[] = [];
 
+  nameCategoryNew: string;
   //categories: PhotoCategory[] = this.photoCatServ.getCategoriesArray();
   //photosAllCategories: { name: string; photos: Photo[] }[] = [];
 
 
   ngOnInit() {
-
+    console.log("Route: ")
+    console.log(this.route.snapshot.params['nameCategory'])
+    this.nameCategoryNew = this.route.snapshot.params['nameCategory'];
     this.nameCategory = this.photoCatServ.getCategoryName();
     this.photos = this.photoCatServ.getPhotos();
 

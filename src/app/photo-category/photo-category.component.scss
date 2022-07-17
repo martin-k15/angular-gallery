@@ -32,6 +32,7 @@
 
          &:hover {
              border: 2px solid $hover-color;
+
          }
 
          .img-responsive {
@@ -62,7 +63,9 @@
              text-transform: capitalize;
              color: $main-color;
              font-weight: 600;
+
          }
+
 
 
      }
@@ -86,6 +89,20 @@
      justify-content: center;
  }
 
+ .card__cross {
+    position: absolute;
+    right: 1em;
+    top: 1em;
+    color: white;
+    width: 2em;
+    height: 2em;
+    border-radius: 50%;
+    text-align: center;
+
+    &:hover {
+        color: red;
+    }
+}
 
  .plus-marker::before {
      @include plus-marker;

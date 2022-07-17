@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { PhotoCategory } from './photo-category.module';
 import { PhotoCategoryService } from './service/photo-category.service';
 import { Photo } from './photo.module';
@@ -11,12 +11,23 @@ import { Photo } from './photo.module';
 export class AppComponent {
   title = 'angular-gallery';
 
-  constructor(private photoCategoryService: PhotoCategoryService){}
+  constructor(private photoCategoryService: PhotoCategoryService) { }
 
-  ngOnInit():void{
+  ngOnInit(): void {
+
   }
 
 
 
-  
+  popup = document.getElementById("popup");
+  pooop = document.querySelector("#popup");
+
+  openPopup() {
+    //console.log(this.popNew.nativeElement);
+    //this.popNew.nativeElement.classList.add("open-popup");
+  }
+
+  closePopup() {
+
+  }
 }
