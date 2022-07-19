@@ -42,15 +42,5 @@ export class PhotosListComponent implements OnInit {
   }
 
 
-//  loadAllPhotos(): void;
-/*
-  loadAllPhotos() {
-    this.categories.forEach(c => {
-      this.photosAllCategories.push({ name: c.name, photos: c.photos })
-    });
-    console.log(this.photosAllCategories);
-    this.nameCategory = this.photoCatServ.getCategoryName();
-    console.log("this.nameCategory");
-  }*/
 
 }

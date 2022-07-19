@@ -15,12 +15,10 @@ export class PhotoCategory {
     }
 
     getNameDesc(lenArr: number) {
-        if(lenArr == 1){
-            return('fotka');
-        } else if (lenArr > 1 && lenArr < 5){
-            return('fotky')
-        } else{
-            return('fotek')
+        if (lenArr == 1) {
+            return ('photo');
+        } else {
+            return ('photos')
         }
     }
 }

@@ -2,7 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter, ViewChild, ElementRef }
 import { HttpClientModule } from '@angular/common/http';
 import { PhotoCategoryService } from 'src/app/service/photo-category.service';
 import { Router } from '@angular/router';
-
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-photo-add',
   templateUrl: './photo-add.component.html',
@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
 
 export class PhotoAddComponent {
 
-  constructor(pcService: PhotoCategoryService, private router: Router) { }
+  constructor(private pcService: PhotoCategoryService, private router: Router, private route: ActivatedRoute) { }
 
   @ViewChild('fileUpload') insertedImage: ElementRef;
   dropArea = document.getElementById('drop-area');
@@ -19,31 +19,25 @@ export class PhotoAddComponent {
 
   ngOnInit() { }
 
+  onInsert(ev: Event) {
+    console.log("-- onInsert --")
+    let nameCategory: string = this.route.snapshot.params['nameCategory']
+    console.log(ev.target);
+    //console.log(this.insertedImage.nativeElement.value);
+    console.log("-----")
+    console.log(this.insertedImage.nativeElement.files[0]);
+    let url: string = window.URL.createObjectURL(this.insertedImage.nativeElement.files[0])
+    console.log("URL: " + url)
 
-  onInsert(file: HTMLInputElement){
-    console.log(this.insertedImage.nativeElement.value);
-    console.log(file.value);
-    this.router.navigateByUrl('/categories')
+    var path = (window.URL || window.webkitURL).createObjectURL(this.insertedImage.nativeElement.files[0]);
+    console.log("path!!")
+    console.log(this.insertedImage.nativeElement.files[0]);
 
-    HTMLInputElement
+    this.pcService.pushNewPhoto(nameCategory, url)
+
+
+    this.router.navigateByUrl('/categories/' + nameCategory)
   }
-  /*
-  fileName: string
-  //http:HttpClient
-  onFileSelected(event: Event) {
-    //const file: File = event.target.files[0];
-    if (file) {
-      this.fileName = file.name;
-      const formData = new FormData();
-      formData.append("thumbnail", file);
-      const upload$ = this.http.post("/api/thumbnail-upload", formData);
-      upload$.subscribe();
-    }
-    */
-    /*
-    preventDefaults (e) {
-      e.preventDefault()
-      e.stopPropagation()
-    }
-    */
-  }
+
+
+}

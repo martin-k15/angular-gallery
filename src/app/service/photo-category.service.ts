@@ -40,11 +40,21 @@ export class PhotoCategoryService {
   addToRoutes(r: Route[]) {
     //r.push( {path: 'categories/Food', component: PhotosListComponent})
   }
-
+  
   getCategoriesArray() {
-    this.generatePhotos();
+    //this.generatePhotos();
     return this.categories.slice();
   }
+  
+  pushNewPhoto(nameCategory: string ,url: string){
+    //this.categories[0].photos.push(new Photo(url));
+    let arrayToBePushed = this.categories.find(c => c.name == nameCategory);
+    if(arrayToBePushed){
+      console.log(arrayToBePushed + ":*url*:" + url)
+      arrayToBePushed.photos.push(new Photo(url));
+    }
+  }
+
 
 
   categoryName: string;
@@ -83,6 +93,9 @@ export class PhotoCategoryService {
     return newPhotoPath;
   }
 
+  toAddPhotoToCategory(nameC: string, photo: File){
+
+  }
 
 
   saveData() {

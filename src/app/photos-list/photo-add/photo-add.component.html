@@ -1,7 +1,8 @@
 <form class="input-form">
     <p>Upload a JPG photo..</p>
-    <input type="file" class="file-input"
-     #fileUpload (change)="onInsert(fileUpload)">
+    <input type="file" class="file-input" id="image-input"
+     #fileUpload (change)="onInsert($event)" accept="image/jpeg, image/png, image/jpg">
     <label class="button" for="fileElem">Select some files</label>
     
 </form>
+<div id="display-image"></div>
