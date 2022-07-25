@@ -20,7 +20,7 @@ export class PhotoAddComponent {
   ngOnInit() { }
 
   onInsert(ev: Event) {
-    console.log("-- onInsert --")
+    console.log("-- onInsert function --")
     let nameCategory: string = this.route.snapshot.params['nameCategory']
     console.log(ev.target);
     //console.log(this.insertedImage.nativeElement.value);
