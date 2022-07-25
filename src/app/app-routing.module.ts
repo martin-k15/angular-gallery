@@ -6,6 +6,7 @@ import { PhotosListComponent } from './photos-list/photos-list.component';
 import { PhotoCategoryService } from './service/photo-category.service';
 import { PhotoAddComponent } from './photos-list/photo-add/photo-add.component';
 import { PhotoCategory } from './photo-category.module';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 let routes: Routes = [
   {path: '', redirectTo:'/categories', pathMatch: 'full'},
@@ -14,9 +15,11 @@ let routes: Routes = [
   {path: 'categories/:nameCategory', component: PhotosListComponent},
   //{path: 'drag-and-drop', component: PhotoAddComponent},
   {path: 'categories/:nameCategory/drag-and-drop', component: PhotoAddComponent},
+  {path: 'not-found', component: PageNotFoundComponent},
+  {path: '**', redirectTo:'/not-found'}
 ];
 
-@NgModule({
+@NgModule({ 
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
