@@ -14,6 +14,7 @@ export class PhotoAddComponent {
   constructor(private pcService: PhotoCategoryService, private router: Router, private route: ActivatedRoute) { }
 
   @ViewChild('fileUpload') insertedImage: ElementRef;
+  @ViewChild('urlInput') urlPathImage: ElementRef;
   dropArea = document.getElementById('drop-area');
 
 
@@ -22,12 +23,12 @@ export class PhotoAddComponent {
   onInsert() {
     console.log("-- onInsert function --")
     let nameCategory: string = this.route.snapshot.params['nameCategory']
-    console.log(this.insertedImage.nativeElement.files[0]);
-    let url: string = window.URL.createObjectURL(this.insertedImage.nativeElement.files[0])
-    console.log("URL: " + url)
+    console.log(this.urlPathImage.nativeElement.value);
+    let url: string = this.urlPathImage.nativeElement.value;
+
 
     //var path = (window.URL || window.webkitURL).createObjectURL(this.insertedImage.nativeElement.files[0]);
-    console.log(this.insertedImage.nativeElement.files[0]);
+    //console.log(this.insertedImage.nativeElement.files[0]);
     this.pcService.pushNewPhoto(nameCategory, url)
 
     this.router.navigateByUrl('/categories/' + nameCategory)

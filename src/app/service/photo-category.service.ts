@@ -1,13 +1,7 @@
-import { Route } from "@angular/router";
 import { PhotoCategory } from "../photo-category.module";
 import { Photo } from "../photo.module";
-import { PhotosListComponent } from "../photos-list/photos-list.component";
-
-
 
 export class PhotoCategoryService {
-
-  categoryName: string;
 
   photosForCategory: Photo[] = [
     new Photo('https://www.gstatic.com/webp/gallery/1.webp'),
@@ -21,6 +15,7 @@ export class PhotoCategoryService {
     new Photo('https://img.freepik.com/free-photo/soccer-into-goal-success-concept_1150-5276.jpg?t=st=1657554553~exp=1657555153~hmac=8f2f8ad17adf44b945a6198f40e30b38b93886cd3f98012779e746d2cc0a5bd2&w=740')
   ];
 
+  // default categories with random photos
   categories: PhotoCategory[] = [
     new PhotoCategory('Nature', 'https://blog.depositphotos.com/wp-content/uploads/2017/07/Soothing-nature-backgrounds-2.jpg.webp', this.photosForCategory.slice(0, 1)),
     new PhotoCategory('Architecture', 'https://www.2020architekti.cz/wp-content/webp-express/webp-images/doc-root/wp-content/uploads/2022/02/NZ_RadoveDomy_06-1024x576.jpg.webp', this.photosForCategory),
@@ -37,58 +32,31 @@ export class PhotoCategoryService {
   pushNewPhoto(nameCategory: string, url: string) {
     let arrayToBePushed = this.categories.find(c => c.name == nameCategory);
     if (arrayToBePushed) {
-      console.log(arrayToBePushed + ":*url*:" + url)
       arrayToBePushed.photos.push(new Photo(url));
     }
   }
 
 
-  setCategory(elem: PhotoCategory) {
-    this.categoryName = elem.name;
-    //this.saveData()
-  }
-  saveData() {
-    localStorage.setItem('C-NAME', this.categoryName);
-    localStorage.setItem('C-P', JSON.stringify(this.categories.find(c => c.name === localStorage.getItem('C-NAME'))?.photos as Photo[]))
-  }
-
-
-  getCategoryName(nameCategory: string) {
-
-  
-    /*
-    const val = localStorage.getItem('C-NAME');
-    if (val) {
-      return val
-    }
-    return 'nope';
-    */
-   return 'nope';
-  }
-
+  // return photos array by name category that user clicked
   getPhotosFromCategoryClickedName(name: string) {
     let categoryPhotos: Photo[] = [];
-    /*
-    const val = localStorage.getItem('C-P');
-    if (val) {
-      return JSON.parse(val);
-    }
-    */
+
     this.categories.forEach(c => {
       if (c.name == name) {
         categoryPhotos = c.photos;
       }
-   });
-   return categoryPhotos;
+    });
+    return categoryPhotos;
   }
 
   // adds new category to photo-category component
   toAddNewCategory(name: string) {
     console.log("New name category: " + name)
-    let newPhotoPath: string = this.getRandomUrlPath(); // generates random preview photo
+    let newPhotoPath: string = this.getRandomUrlPath(); 
     this.categories.push(new PhotoCategory(name, newPhotoPath, []));
   }
 
+  // generates random preview photo
   getRandomUrlPath() {
     let numWidth = Math.floor(Math.random() * (660 - 650 + 1)) + 650;
     let numHeight = Math.floor(Math.random() * (400 - 390 + 1)) + 390;

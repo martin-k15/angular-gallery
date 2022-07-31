@@ -20,9 +20,7 @@ export class PhotosListComponent implements OnInit {
 
   ngOnInit() {
     console.log("---- PHOTOS LIST: " + this.route.snapshot.params['nameCategory'] + " ----")
-
     this.nameCategoryClicked = this.route.snapshot.params['nameCategory'];
-    //this.nameCategory = this.photoCatServ.getCategoryName(this.nameCategoryClicked);
     this.photos = this.photoCatServ.getPhotosFromCategoryClickedName(this.nameCategoryClicked);
   }
 

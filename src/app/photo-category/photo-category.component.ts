@@ -1,7 +1,6 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PhotoCategoryService } from '../service/photo-category.service';
 import { PhotoCategory } from '../photo-category.module';
-import { PhotosListComponent } from '../photos-list/photos-list.component';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -10,7 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./photo-category.component.scss']
 })
 export class PhotoCategoryComponent implements OnInit {
- 
+
   constructor(private photoCategoryService: PhotoCategoryService, private router: Router,
     private route: ActivatedRoute) { }
 
@@ -19,11 +18,8 @@ export class PhotoCategoryComponent implements OnInit {
 
   categories: PhotoCategory[] = this.photoCategoryService.getCategoriesArray()
 
- //[routerLink]="'../categories/' + c.name"
-  showCategory(c: PhotoCategory){
-
-    this.photoCategoryService.setCategory(c);
-    this.router.navigate([c.name], {relativeTo: this.route})
+  showCategory(c: PhotoCategory) {
+    this.router.navigate([c.name], { relativeTo: this.route })
   }
 
 }

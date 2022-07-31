@@ -1,5 +1,8 @@
-<form class="input-form">
+<form class="input-form" ngForm>
     <label class="button" for="fileElem">Select one photo</label>
-    <input type="file" class="file-input" id="image-input" #fileUpload (change)="onInsert()"
-        accept="image/jpeg, image/png, image/jpg">
+
+    <input type="text" value="url" placeholder="" class="file-input" placeholder="Enter a URL of your image" #urlInput>
+
+    <button (click)="onInsert()">Confirm</button>
+    <button>Generate random photo! </button>
 </form>
