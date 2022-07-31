@@ -19,22 +19,16 @@ export class PhotoAddComponent {
 
   ngOnInit() { }
 
-  onInsert(ev: Event) {
+  onInsert() {
     console.log("-- onInsert function --")
     let nameCategory: string = this.route.snapshot.params['nameCategory']
-    console.log(ev.target);
-    //console.log(this.insertedImage.nativeElement.value);
-    console.log("-----")
     console.log(this.insertedImage.nativeElement.files[0]);
     let url: string = window.URL.createObjectURL(this.insertedImage.nativeElement.files[0])
     console.log("URL: " + url)
 
-    var path = (window.URL || window.webkitURL).createObjectURL(this.insertedImage.nativeElement.files[0]);
-    console.log("path!!")
+    //var path = (window.URL || window.webkitURL).createObjectURL(this.insertedImage.nativeElement.files[0]);
     console.log(this.insertedImage.nativeElement.files[0]);
-
     this.pcService.pushNewPhoto(nameCategory, url)
-
 
     this.router.navigateByUrl('/categories/' + nameCategory)
   }

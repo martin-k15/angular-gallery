@@ -17,15 +17,12 @@ export class FormAddCategoryComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
   addCategory(name: string){
     if (name == "" || name.length > 20){
       return false;
     }
     this.pcService.toAddNewCategory(name);
     this.router.navigateByUrl('/categories');
-    console.log("CLos")
-    //this.pcService.addToRoutes(name);
     return true;
   }
 

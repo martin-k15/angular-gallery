@@ -7,6 +7,8 @@ import { PhotosListComponent } from "../photos-list/photos-list.component";
 
 export class PhotoCategoryService {
 
+  categoryName: string;
+
   photosForCategory: Photo[] = [
     new Photo('https://www.gstatic.com/webp/gallery/1.webp'),
     new Photo('https://www.gstatic.com/webp/gallery/2.webp'),
@@ -27,62 +29,63 @@ export class PhotoCategoryService {
     new PhotoCategory('Abstract', 'https://expertphotography.b-cdn.net/wp-content/uploads/2018/03/abstract-photography.1.jpg', this.photosForCategory.slice(1, 6))
   ];
 
-
-  generatePhotos() {
-    let index = 0;
-    while (index < 10) {
-      let photoPath: string = this.getRandomUrlPath();
-      this.photosForCategory.push(new Photo(photoPath));
-      index++;
-    }
-  }
-
-  addToRoutes(r: Route[]) {
-    //r.push( {path: 'categories/Food', component: PhotosListComponent})
-  }
-  
+  // returns all categories array
   getCategoriesArray() {
-    //this.generatePhotos();
     return this.categories.slice();
   }
-  
-  pushNewPhoto(nameCategory: string ,url: string){
-    //this.categories[0].photos.push(new Photo(url));
+
+  pushNewPhoto(nameCategory: string, url: string) {
     let arrayToBePushed = this.categories.find(c => c.name == nameCategory);
-    if(arrayToBePushed){
+    if (arrayToBePushed) {
       console.log(arrayToBePushed + ":*url*:" + url)
       arrayToBePushed.photos.push(new Photo(url));
     }
   }
 
 
-
-  categoryName: string;
   setCategory(elem: PhotoCategory) {
     this.categoryName = elem.name;
-    this.saveData()
+    //this.saveData()
+  }
+  saveData() {
+    localStorage.setItem('C-NAME', this.categoryName);
+    localStorage.setItem('C-P', JSON.stringify(this.categories.find(c => c.name === localStorage.getItem('C-NAME'))?.photos as Photo[]))
   }
 
 
-  getCategoryName() {
+  getCategoryName(nameCategory: string) {
+
+  
+    /*
     const val = localStorage.getItem('C-NAME');
-    console.log("Znám val..? " + val)
     if (val) {
       return val
     }
     return 'nope';
+    */
+   return 'nope';
   }
 
-  getPhotos() {
+  getPhotosFromCategoryClickedName(name: string) {
+    let categoryPhotos: Photo[] = [];
+    /*
     const val = localStorage.getItem('C-P');
-    if (val){
+    if (val) {
       return JSON.parse(val);
     }
+    */
+    this.categories.forEach(c => {
+      if (c.name == name) {
+        categoryPhotos = c.photos;
+      }
+   });
+   return categoryPhotos;
   }
 
+  // adds new category to photo-category component
   toAddNewCategory(name: string) {
     console.log("New name category: " + name)
-    let newPhotoPath: string = this.getRandomUrlPath();
+    let newPhotoPath: string = this.getRandomUrlPath(); // generates random preview photo
     this.categories.push(new PhotoCategory(name, newPhotoPath, []));
   }
 
@@ -91,16 +94,6 @@ export class PhotoCategoryService {
     let numHeight = Math.floor(Math.random() * (400 - 390 + 1)) + 390;
     let newPhotoPath: string = 'https://picsum.photos/' + numWidth.toString() + '/' + numHeight.toString();
     return newPhotoPath;
-  }
-
-  toAddPhotoToCategory(nameC: string, photo: File){
-
-  }
-
-
-  saveData() {
-    localStorage.setItem('C-NAME', this.categoryName);
-    localStorage.setItem('C-P', JSON.stringify(this.categories.find(c => c.name === localStorage.getItem('C-NAME'))?.photos as Photo[]))
   }
 
 }

@@ -1,15 +1,12 @@
-<span><a routerLink="../" class="back-href" >&#x2190; {{nameCategoryNew}}</a></span>
-<!-- [routerLink]="'../categories/' + c.name"-->
+<span><a routerLink="../" class="back-href" >&#x2190; {{nameCategoryClicked}}</a></span>
 <div class="container">
     <a class="container__item" *ngFor="let p of photos">
         <img [src]="p.path" class="container__item--img" [alt]=p.path>
     </a>
 
-    <a class="container__item" routerLink="/categories/{{nameCategoryNew}}/drag-and-drop">
+    <a class="container__item" routerLink="/categories/{{nameCategoryClicked}}/drag-and-drop">
         <div class="card__secondary plus-marker">
             <span class="card__name--add">Přidat fotografii</span>
         </div>
     </a>
-
-
 </div>

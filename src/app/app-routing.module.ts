@@ -10,10 +10,9 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 
 let routes: Routes = [
   {path: '', redirectTo:'/categories', pathMatch: 'full'},
-  {path: 'categories/add', component: FormAddCategoryComponent},
   {path: 'categories', component: PhotoCategoryComponent},
+  {path: 'categories/add', component: FormAddCategoryComponent},
   {path: 'categories/:nameCategory', component: PhotosListComponent},
-  //{path: 'drag-and-drop', component: PhotoAddComponent},
   {path: 'categories/:nameCategory/drag-and-drop', component: PhotoAddComponent},
   {path: 'not-found', component: PageNotFoundComponent},
   {path: '**', redirectTo:'/not-found'}
@@ -26,21 +25,5 @@ let routes: Routes = [
 
 
 export class AppRoutingModule { 
-
-  constructor(private photoService: PhotoCategoryService) {
-/*
-    this.categories.forEach(c => {
-      routes.push({path: 'categories/' + c.name.toString(), component: PhotosListComponent})
-    });
-    console.log("Routes filled: ");
-    console.log(routes);
-    */
-  }
-
-
-
-  categories: PhotoCategory[] = this.photoService.getCategoriesArray();
-  
-  routes = this.photoService.addToRoutes(routes);
 
 }

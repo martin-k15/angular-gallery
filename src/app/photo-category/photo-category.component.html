@@ -1,14 +1,11 @@
 <div class="box">
-
-    <a class="container__item" *ngFor="let c of categories" [routerLink]="'../categories/' + c.name" (click)="showCategory(c)">
+    <a class="container__item" *ngFor="let c of categories" (click)="showCategory(c)">
         <div class="card">
             <span class="card__info">{{ c.photos.length }} {{ c.nameDescriptionByNumber}} </span>
             <img [src]="c.previewPhotoPath" class="img-responsive" alt="alt-text">
             <span class="card__name">{{ c.name }}</span>
-
         </div>
     </a>
-
     <a class="container__item" routerLink="../categories/add">
         <div class="card">
             <div class="card__secondary plus-marker">

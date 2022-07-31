@@ -16,29 +16,14 @@ export class PhotosListComponent implements OnInit {
   nameCategory: string;
   photos: Photo[] = [];
 
-  nameCategoryNew: string;
-  //categories: PhotoCategory[] = this.photoCatServ.getCategoriesArray();
-  //photosAllCategories: { name: string; photos: Photo[] }[] = [];
-
+  nameCategoryClicked: string;
 
   ngOnInit() {
-    console.log("Route: ")
-    console.log(this.route.snapshot.params['nameCategory'])
-    this.nameCategoryNew = this.route.snapshot.params['nameCategory'];
-    this.nameCategory = this.photoCatServ.getCategoryName();
-    this.photos = this.photoCatServ.getPhotos();
+    console.log("---- PHOTOS LIST: " + this.route.snapshot.params['nameCategory'] + " ----")
 
-    /*
-    if (this.nameCategory === undefined) {
-      localStorage.getItem('C-NAME')
-      console.log("Settt")
-      //this.nameCategory = localStorage.getItem('C-NAME');
-    } else {
-      localStorage.setItem('C-NAME', this.nameCategory);
-      //this.loadAllPhotos()
-    }
-    */
-    console.log("Photos-list: onInit called! " + this.nameCategory)
+    this.nameCategoryClicked = this.route.snapshot.params['nameCategory'];
+    //this.nameCategory = this.photoCatServ.getCategoryName(this.nameCategoryClicked);
+    this.photos = this.photoCatServ.getPhotosFromCategoryClickedName(this.nameCategoryClicked);
   }
 
 

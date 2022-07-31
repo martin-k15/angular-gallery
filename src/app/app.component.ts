@@ -16,18 +16,11 @@ export class AppComponent {
   ngOnInit(): void {
 
   }
+  /*
+    openPopup() {
+      console.log(this.popNew.nativeElement);
+      this.popNew.nativeElement.classList.add("open-popup");
+    }
+  */
 
-
-
-  popup = document.getElementById("popup");
-  pooop = document.querySelector("#popup");
-
-  openPopup() {
-    //console.log(this.popNew.nativeElement);
-    //this.popNew.nativeElement.classList.add("open-popup");
-  }
-
-  closePopup() {
-
-  }
 }
